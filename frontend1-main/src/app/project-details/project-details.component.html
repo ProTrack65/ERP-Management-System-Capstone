@@ -1,0 +1,71 @@
+<div class="project-management-container">
+    <h1>Project Management</h1>
+  
+    <!-- Add Project Button -->
+    <button (click)="addNewRow()" class="add-project-btn">
+      Add Project
+    </button>
+  
+    <!-- Project Table -->
+    <table class="project-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Client ID</th>
+          <th>Client Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Budget</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Display existing projects -->
+        <tr *ngFor="let project of projects; let i = index">
+          <td>{{ project.id }}</td>
+          <td>{{ project.name }}</td>
+          <td>{{ project.clientId }}</td>
+          <td>{{ project.clientName }}</td>
+          <td>{{ project.startDate }}</td>
+          <td>{{ project.endDate }}</td>
+          <td>{{ project.budget }}</td>
+          <td>{{ project.status }}</td>
+          <td>
+            <button (click)="assignEmployees(project.id)" class="assign-btn">Assign Employees</button>
+            <button (click)="exploreDetails(project.id)" class="explore-btn">Explore Details</button>
+          </td>
+        </tr>
+  
+        <!-- Add new project row -->
+        <tr *ngIf="isAddingNewRow">
+          <td><input type="text" [(ngModel)]="newProject.id" placeholder="ID" /></td>
+          <td><input type="text" [(ngModel)]="newProject.name" placeholder="Name" /></td>
+          <td><input type="text" [(ngModel)]="newProject.clientId" placeholder="Client ID" /></td>
+          <td><input type="text" [(ngModel)]="newProject.clientName" placeholder="Client Name" /></td>
+          <td><input type="date" [(ngModel)]="newProject.startDate" placeholder="Start Date" /></td>
+          <td><input type="date" [(ngModel)]="newProject.endDate" placeholder="End Date" /></td>
+          <td><input type="number" [(ngModel)]="newProject.budget" placeholder="Budget" /></td>
+          <td><input type="text" [(ngModel)]="newProject.status" placeholder="Status" /></td>
+          <td>
+            <button (click)="saveNewRow()" class="save-btn">Save</button>
+            <button (click)="cancelNewRow()" class="cancel-btn">Cancel</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Assign Employees Modal -->
+    <div *ngIf="isAssigningEmployees" class="assign-modal">
+      <h3>Assign Employees to Project</h3>
+      <ul>
+        <li *ngFor="let employee of availableEmployees">
+          <input type="checkbox" [(ngModel)]="employee.assigned" /> {{ employee.name }}
+        </li>
+      </ul>
+      <button (click)="saveAssignedEmployees()">Save Assignments</button>
+      <button (click)="closeAssignModal()">Close</button>
+    </div>
+  </div>
+  

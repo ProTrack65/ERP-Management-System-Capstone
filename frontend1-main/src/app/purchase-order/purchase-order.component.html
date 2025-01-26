@@ -1,0 +1,36 @@
+<div class="purchase-order-container">
+  <h1 class="page-title">Purchase Order Management</h1>
+
+  <div class="add-po-section">
+    <button class="add-po-btn">Add PO</button>
+    <input
+      class="search-bar"
+      type="text"
+      placeholder="Search PO by Project ID"
+      [(ngModel)]="searchQuery"
+      (input)="onSearch()"
+    />
+  </div>
+
+  <div class="po-cards-container">
+    <div *ngFor="let po of filteredPOs" class="po-card">
+      <div class="po-card-header">
+        <h3>{{ po.name }}</h3>
+        <span class="po-id">PO ID: {{ po.id }}</span>
+      </div>
+      <p class="po-description">{{ po.description }}</p>
+      <button class="view-details-btn" (click)="togglePODetails(po.id)">
+        View Full PO Details
+      </button>
+
+      <!-- Full PO Details Section -->
+      <div *ngIf="isDetailsVisible(po.id)" class="po-details-section">
+        <h4>Full PO Details</h4>
+        <p><strong>PO Name:</strong> {{ po.name }}</p>
+        <p><strong>Description:</strong> {{ po.description }}</p>
+        <p><strong>Additional Info:</strong> {{ po.additionalInfo }}</p>
+        <button class="close-details-btn" (click)="togglePODetails(po.id)">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

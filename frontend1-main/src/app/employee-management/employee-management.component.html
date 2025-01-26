@@ -1,0 +1,87 @@
+<!-- Main Container with Sidebar and Content -->
+<div class="container">
+  <!-- Sidebar (Left Menu) -->
+  <nav class="sidebar">
+    <ul class="sidebar-nav">
+      <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Project Details</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">PO Creation</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Invoice Approval and Details</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Financial Details</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <!-- Employee Table and Form -->
+    <div class="employee-table-container">
+      <h2>Employee Management</h2>
+      <button (click)="addNewRow()" class="btn btn-primary">Add New Employee</button>
+
+      <!-- New Row Form -->
+      <div *ngIf="isAddingNewRow" class="new-row-form">
+        <form (submit)="saveNewRow()">
+          <label for="id">ID:</label>
+          <input type="text" [(ngModel)]="newEmployee.id" name="id" required>
+
+          <label for="name">Name:</label>
+          <input type="text" [(ngModel)]="newEmployee.name" name="name" required>
+
+          <label for="designation">Designation:</label>
+          <input type="text" [(ngModel)]="newEmployee.designation" name="designation" required>
+
+          <label for="status">Status:</label>
+          <input type="text" [(ngModel)]="newEmployee.status" name="status" required>
+
+          <label for="projectId">Project ID:</label>
+          <input type="text" [(ngModel)]="newEmployee.projectId" name="projectId" required>
+
+          <label for="salary">Salary:</label>
+          <input type="number" [(ngModel)]="newEmployee.salary" name="salary" required>
+
+          <label for="joinDate">Join Date:</label>
+          <input type="date" [(ngModel)]="newEmployee.joinDate" name="joinDate" required>
+
+          <label for="bankDetails">Bank Details:</label>
+          <input type="text" [(ngModel)]="newEmployee.bankDetails" name="bankDetails" required>
+
+          <button type="submit" class="btn btn-success">Save</button>
+          <button (click)="cancelNewRow()" class="btn btn-danger">Cancel</button>
+        </form>
+      </div>
+
+      <!-- Employee Table -->
+      <table *ngIf="!isAddingNewRow">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Status</th>
+            <th>Project ID</th>
+            <th>Salary</th>
+            <th>Join Date</th>
+            <th>Bank Details</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees; let i = index">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.designation }}</td>
+            <td>{{ employee.status }}</td>
+            <td>{{ employee.projectId }}</td>
+            <td>{{ employee.salary }}</td>
+            <td>{{ employee.joinDate }}</td>
+            <td>{{ employee.bankDetails }}</td>
+            <td>
+              <button (click)="editRow(i)" class="btn btn-warning">Edit</button>
+              <button (click)="deleteRow(i)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

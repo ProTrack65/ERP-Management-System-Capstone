@@ -1,0 +1,170 @@
+/* Main container to hold the sidebar and content */
+.container {
+  display: flex;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 250px;
+  background-color: #2c3e50; /* Dark blue */
+  height: 100vh; /* Full height */
+  padding-top: 20px;
+  position: fixed;
+}
+
+.sidebar-nav {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.sidebar-nav .nav-item {
+  margin: 20px 0;
+}
+
+.sidebar-nav .nav-link {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.sidebar-nav .nav-link:hover {
+  background-color: #34495e; /* Slightly lighter blue */
+  color: #ddd;
+}
+
+/* Content Styles */
+.content {
+  margin-left: 250px; /* To offset the sidebar */
+  padding: 20px;
+  width: 100%;
+  background-color: #ecf0f1; /* Light gray background */
+}
+
+/* Employee Table Container */
+.employee-table-container {
+  padding: 20px;
+  background-color: white; /* White background for the table container */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 80%; /* Reduce table width by 20% */
+  margin: 0 auto; /* Center the table */
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 14px; /* Smaller font size */
+}
+
+th, td {
+  padding: 8px; /* Reduced padding */
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #3498db; /* Blue header */
+  color: white;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Buttons */
+.btn {
+  padding: 8px 16px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #3498db; /* Blue */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9; /* Darker blue */
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: #2ecc71; /* Green */
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #27ae60; /* Darker green */
+  transform: translateY(-2px);
+}
+
+.btn-warning {
+  background-color: #f39c12; /* Orange */
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22; /* Darker orange */
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background-color: #e74c3c; /* Red */
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b; /* Darker red */
+  transform: translateY(-2px);
+}
+
+/* New Row Form */
+.new-row-form {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: 80%; /* Reduce form width by 20% */
+  margin: 0 auto; /* Center the form */
+}
+
+.new-row-form input {
+  margin: 5px 0;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.new-row-form input:focus {
+  border-color: #3498db; /* Blue border on focus */
+  outline: none;
+}
+
+.new-row-form button {
+  margin-top: 10px;
+  width: 48%; /* Adjust button width */
+  display: inline-block; /* Place buttons side by side */
+}
+
+.new-row-form button.btn-success {
+  margin-right: 4%; /* Add spacing between buttons */
+}
